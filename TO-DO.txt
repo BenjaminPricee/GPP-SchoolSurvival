@@ -1,0 +1,18 @@
+ART				
+Player				
+Player walk animations		
+Bullet				
+Student				
+Student Walk Animations		
+Android (angry idle float)	
+Blood Puddle			
+Android Parts			
+Map
+- Wall Tile			
+- Floor Tile			
+- Hall Floor Tile		
+
+AUDIO
+
+
+MECHANICS
