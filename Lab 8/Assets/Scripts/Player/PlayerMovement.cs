@@ -34,9 +34,4 @@ public class PlayerMovement : MonoBehaviour
             body.rotation = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
         }
     }
-
-    private void FixedUpdate()
-    {
-        body.MovePosition(body.position + movement * speed * Time.deltaTime);
-    }
 }
