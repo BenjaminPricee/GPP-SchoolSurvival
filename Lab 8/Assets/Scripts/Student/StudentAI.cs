@@ -5,6 +5,9 @@ public class StudentAI:MonoBehaviour
 {
     private STUDENT_STATES STATE;
     public NavMeshAgent navigation;
+    public Rigidbody2D body;
+
+    private Vector2 oldPos;
 
     private int group;
     private Classes classes;
@@ -13,6 +16,7 @@ public class StudentAI:MonoBehaviour
     {
         navigation.updateRotation = false;
         navigation.updateUpAxis = false;
+        oldPos = body.position;
 
         group = Random.Range(0, 2);
         classes = FindObjectOfType<Classes>();
@@ -26,6 +30,15 @@ public class StudentAI:MonoBehaviour
         {
             navigation.SetDestination(classes.Current(group).position);
 
+        }
+
+        Vector2 dir = oldPos - body.position;
+
+        if(dir != Vector2.zero)
+        {
+            dir.Normalize();
+            body.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            oldPos = body.position;
         }
     }
 }
