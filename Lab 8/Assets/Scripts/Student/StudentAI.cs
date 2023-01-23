@@ -12,6 +12,8 @@ public class StudentAI:MonoBehaviour
     private int group;
     private Classes classes;
 
+    private GameObject enemy;
+
     private void Start()
     {
         navigation.updateRotation = false;
@@ -31,6 +33,19 @@ public class StudentAI:MonoBehaviour
             navigation.SetDestination(classes.Current(group).position);
 
         }
+        else if(STATE==STUDENT_STATES.RUN)
+        {
+            Vector2 run = transform.position - enemy.transform.position;
+            if(run.magnitude > 3)
+            {
+                enemy = null;
+                STATE = STUDENT_STATES.GO_CLASS;
+            }
+            else
+            {
+                navigation.SetDestination(body.position + run.normalized);
+            }
+        }
 
         Vector2 dir = oldPos - body.position;
 
@@ -40,5 +55,11 @@ public class StudentAI:MonoBehaviour
             body.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             oldPos = body.position;
         }
+    }
+
+    public void Panic(GameObject t_enemy)
+    {
+        STATE = STUDENT_STATES.RUN;
+        enemy = t_enemy;
     }
 }
