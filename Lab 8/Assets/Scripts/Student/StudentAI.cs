@@ -65,6 +65,9 @@ public class StudentAI:MonoBehaviour
 
     private void OnDestroy()
     {
-        FindObjectOfType<Score>().ScoreDown();
+        if(FindObjectOfType<Score>())
+        {
+            FindObjectOfType<Score>().ScoreDown();
+        }
     }
 }
