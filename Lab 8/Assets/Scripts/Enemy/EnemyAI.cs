@@ -65,4 +65,12 @@ public class EnemyAI : MonoBehaviour
         target = null;
         navigation.SetDestination(patrol[currentPatrol].position);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Player"|| collision.transform.tag == "Student")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }

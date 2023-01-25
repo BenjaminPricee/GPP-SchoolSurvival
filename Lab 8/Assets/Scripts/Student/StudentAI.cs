@@ -62,4 +62,9 @@ public class StudentAI:MonoBehaviour
         STATE = STUDENT_STATES.RUN;
         enemy = t_enemy;
     }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<Score>().ScoreDown();
+    }
 }
