@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public NavMeshAgent navigator;
     public Rigidbody2D body;
+    public Animator anim;
 
     public float speed = 0.1f;
     private Vector2 movement;
@@ -29,9 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
         if(movement != Vector2.zero)
         {
+            anim.SetBool("isWalking", true);
+
             movement.x *= -1;
             movement.y *= -1;
             body.rotation = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
         }
     }
 }

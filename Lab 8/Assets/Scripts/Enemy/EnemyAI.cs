@@ -33,6 +33,9 @@ public class EnemyAI : MonoBehaviour
                 UpdatePatrol();
                 navigation.SetDestination(patrol[currentPatrol].position);
             }
+
+            body.rotation = Mathf.Atan2(patrol[currentPatrol].position.y, patrol[currentPatrol].position.x) * Mathf.Rad2Deg;
+            body.rotation -= 135;
         }
         else if (STATE == ENEMY_STATES.ATTACK)
         {
